@@ -20,8 +20,4 @@ RUN make deps
 RUN make
 RUN make install
 
-EXPOSE 80
-
-ENTRYPOINT ["/usr/local/bin/droned"]
-
-CMD ["--port=:80", "--datasource=/var/lib/drone/drone.sqlite"]
+CMD /usr/local/bin/droned --port=:${PORT:-80} --datasource=/var/lib/drone/drone.sqlite
